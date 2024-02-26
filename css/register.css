@@ -1,0 +1,27 @@
+
+ /*register css*/
+ .form{
+position: relative;
+ }
+
+ input[type="radio"]:focus{
+    border-radius: 50%;
+   outline: none;
+   border: none;
+ }
+ .form-second-sub-container:not(span){
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+ }
+ .form-third-sub-container{
+  display: flex;
+  justify-content: space-between;
+}
+ 
+
+ select{
+  height: 24px;
+ }
+

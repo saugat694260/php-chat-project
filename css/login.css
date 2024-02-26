@@ -1,0 +1,25 @@
+/*login css*/
+.form-first-sub-container{
+    display: grid;
+    grid-row-gap:4px;
+    
+}
+
+.form{
+
+position: relative;
+
+
+}
+
+
+  .form-second-sub-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-third-sub-container{
+    display:inline-block
+  }

@@ -1,0 +1,220 @@
+*{
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  body{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(251, 247, 240);
+    display: grid;
+    min-width:500px; 
+    
+  }
+
+  span{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-shrink: 0;
+    width: 40vh;
+    color: red;
+    font-size: 16px;
+    height: 18px;
+    text-wrap: nowrap;
+    /*use width 100% so it will not effect when shrinking*/
+    width: 100%;
+    
+  }
+   
+  
+ p{
+  text-align: center;
+  font-size: 18px;
+}
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: green;
+}
+
+a:active {
+  color: red;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+label{
+ font-size: 180%;
+}
+
+  /* form css*/
+
+  .page-main-container{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .form-main-container{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form{
+  display: flex;
+ 
+  }
+  
+  
+  .form-container{
+    display: grid;
+    grid-row-gap:2px;
+    padding: 18%;
+    border-radius: 16px;
+    box-shadow: 4px 8px 8px 2px rgb(220, 220, 222);    
+   
+    
+  }
+  
+.form-first-sub-container{
+    display: grid;
+    grid-row-gap:2px;
+    min-width: 40vh;
+    align-items: center;
+    justify-items: center;
+  align-items: center;
+    
+    
+}
+.form-first-sub-container>div{
+  display: flex;
+}
+
+
+input[type="text"]{
+  width: 40vh;
+  height: 30px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  border:1px solid rgb(183, 173, 173);
+  font-size: 180%;
+  padding-left:10px;
+  width: 96%;
+}
+
+input[type="password"]{
+  width: 35vh;
+  height: 30px;
+  border-radius: 4px;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+  margin-bottom: 4px;
+  border:1px solid rgb(183, 173, 173);
+  border-right: none;
+  font-size: 180%;
+  padding-left:10px;
+  width: 100%;
+}
+.show-and-hide-password{
+  padding-right: 8px;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  height:32px;
+  margin-left: 0;
+  background-color: transparent;
+  border:1px solid rgb(183, 173, 173);
+  border-left: none;
+  font-size: 12px;
+  
+  
+}
+  
+ input[type="text"]:focus,input[type="password"]:focus{
+    outline: none;
+    border-bottom: 1px solid #333;
+ }
+  
+ input[type="submit"]{
+    height: 40px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 180%;
+    padding: 4px;
+    margin-top: 4px;
+ }
+ .form-fourth-sub-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* title*/
+ 
+  .title-main-container{
+    width: 50%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2);
+    grid-row-gap:32px;
+    background-color:white;
+    border-radius: 8px;
+    width: 50%;
+    animation:titleMainContainerAnimation 1s ease-out;
+    
+  }
+  .title-first-sub-container>p{
+    padding: 18px;
+    font-size: 20vh;
+    font-weight: bold;
+    color: indianred;
+    animation: titleAnimation 0.5s infinite;
+ 
+  }
+  .title-second-sub-container>p{
+    padding: 20px;
+  }
+  @keyframes titleAnimation {
+    0%   {color: red;}
+    25%  {color: yellow;}
+    50%  {color: blue;}
+    100% {color: green;}
+    
+  }
+  @keyframes titleMainContainerAnimation {
+    0%   {position: absolute;top: 5;right: 0; opacity: 0;}
+    5%   {position: absolute;top: 10px;right: 0;opacity: 0.5;}
+    10%   {position: absolute;top: 15px;right: 0;opacity: 0.10;}
+    15%   {position: absolute;top: 20px;right: 0;opacity: 0.15;}
+    20%   {position: absolute;top: 25px;right: 0;opacity: 0.20;}
+    25%  {position: absolute;top: 30px;right: 0;opacity: 0.25;}
+    30%  {position: absolute;top: 35px;right: 0;opacity: 0.30;}
+    35%   {position: absolute;top: 40px;right: 0;opacity: 0.35;}
+    40%   {position: absolute;top: 45px;right: 0;opacity: 0.40;}
+    45%   {position: absolute;top: 50px;right: 0;opacity: 0.45;}
+    50%  {position: absolute;top: 55px;right: 0;opacity: 0.50;}
+    55%  {position: absolute;top: 60px;right: 0;opacity: 0.55;}
+    60%  {position: absolute;top: 65px;right: 0;opacity: 0.60;}
+    65%   {position: absolute;top: 70px;right: 0;opacity: 0.65;}
+    70%   {position: absolute;top: 75px;right: 0;opacity: 0.70;}
+    75%  {position: absolute;top: 80px;right: 0;opacity: 0.75;}
+    80%  {position: absolute;top: 85px;right: 0;opacity: 0.80;}
+    85%   {position: absolute;top: 90px;right: 0;opacity: 0.85;}
+    90%  {position: absolute;top: 95px;right: 0;opacity: 0.90;}
+    95%  {position: absolute;top: 100px;right: 0;opacity: 0.95;}
+    100% {position: absolute;top: 110px;right:0;opacity: 1;}
+  }
+  
