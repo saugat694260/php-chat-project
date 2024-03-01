@@ -44,7 +44,7 @@ if(!isset($_POST['send-message'])){
                 ?> <p <?php if($row['userId']==$current_user_data['id']){echo"class='current-user-message-side'";}
                  else if($row['userId']==$_GET['id']){
                     echo"class='other-user-message-side'";
-                }?>><?php echo "{$row['userName']}: "."{$row['message']}";?></p><?php
+                }?>><?php echo "{$row['message']}";?></p><?php
                 }
              }
 
@@ -59,7 +59,10 @@ if(!isset($_POST['send-message'])){
         $secondResult=$conn->query($query);
             if($secondResult->num_rows>0){
                 while($row=$secondResult->fetch_assoc()){
-                    ?> <p><?php echo "{$row['userName']}: "."{$row['message']}";?></p><?php
+                    ?> <p <?php if($row['userId']==$current_user_data['id']){echo"class='current-user-message-side'";}
+                     else if($row['userId']==$_GET['id']){
+                        echo"class='other-user-message-side'";
+                    }?>><?php echo "{$row['message']}";?></p><?php
                 }
             }
 
