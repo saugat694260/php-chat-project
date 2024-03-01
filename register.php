@@ -3,6 +3,7 @@ session_start();
 include('./phpfiles/connection.php');
 include('./phpfiles/validation.php');
 include('./phpfiles/utils.php');
+checkLoggedoutOrNot();
 
 ?>
 <!--php code to insert data-->
@@ -37,7 +38,7 @@ echo $userId;
         
                 //if user enters email
                 if(preg_match_all($EmailRegex,$emailOrPhonenumber)){
-                    $query="insert into user_data(userId,email,username,password,DOB,gender) values('$userId','$emailOrPhonenumber','$username','$hash','$dob','$gender')";
+                    $query="insert into users_data(userId,email,username,password,DOB,gender) values('$userId','$emailOrPhonenumber','$username','$hash','$dob','$gender')";
                     $conn->query($query);
                     header('Location:login.php');
                     die;
@@ -45,7 +46,7 @@ echo $userId;
                 }
                 //if user enters phone
                 if(preg_match_all($phoneNumberRegex,$emailOrPhonenumber)){
-                    $query="insert into user_data(userId,phonenumber,username,password,DOB,gender) values('$userId','$emailOrPhonenumber','$username','$hash','$dob','$gender')";
+                    $query="insert into users_data(userId,phonenumber,username,password,DOB,gender) values('$userId','$emailOrPhonenumber','$username','$hash','$dob','$gender')";
                     $conn->query($query);
                     header('Location:login.php');
                     die;

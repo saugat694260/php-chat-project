@@ -54,11 +54,30 @@ const username=document.getElementById("username-js");
 const errorMessageUsername=document.getElementById('error-message-username-js');
 const errorMessageAge=document.getElementById('error-message-age-js')
 const password=document.getElementById("password-js");const errorMessagePassword=document.getElementById("error-message-password-js");
+const showOrHidePasswordButton=document.getElementById('show-and-hide-password-js');
 export const male=document.getElementById('male-js');
 export const female=document.getElementById('female-js');
 export const others=document.getElementById('others-js');
 const errorMessageGender=document.getElementById("error-message-gender-js");
 const submit=document.getElementById("submit-js");
+
+ //show or hide password
+ let showOrHidePasswordButtonClicked=false;
+ showOrHidePasswordButton.addEventListener('click',(e)=>{
+e.preventDefault();
+
+if(!showOrHidePasswordButtonClicked){
+  showOrHidePasswordButton.textContent='hide';
+  password.type='text';
+  showOrHidePasswordButtonClicked=true;
+}
+else{
+  showOrHidePasswordButton.textContent='show';
+  password.type='password';
+  showOrHidePasswordButtonClicked=false;
+}
+
+ });
 
 
  //submit for fourms of regestration

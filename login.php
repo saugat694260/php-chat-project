@@ -4,6 +4,7 @@ session_start();
 include('./phpfiles/connection.php');
 include('./phpfiles/validation.php');
 include('./phpfiles/utils.php');
+checkLoggedoutOrNot();
 
 
 ?>
@@ -22,10 +23,10 @@ include('./phpfiles/utils.php');
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
 <!--style link-->
-    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/shared.css?=v<?php echo time();?>">
     <link rel="stylesheet" href="css/login.css">
 <!--script link-->
-<script type="module" src="/scripts/login.js"></script>
+<script type="module" src="scripts/login.js"></script>
 
 
 <title>FORM VALIDATION</title>
@@ -63,16 +64,16 @@ include('./phpfiles/utils.php');
                     else  if(validateEmailOrPhone($emailOrPhonenumber) && validatePassword($password)){
                     //if user enters email
                         if(preg_match_all($EmailRegex,$emailOrPhonenumber)){
-                            $query="select * from user_data where email='$emailOrPhonenumber' limit 1" ;
+                            $query="select * from users_data where email='$emailOrPhonenumber' limit 1" ;
                             $result=$conn->query($query);
 
                                 if($result && $result->num_rows>0){
 
                                      if($row=$result->fetch_assoc()){
 
-                                            if (password_verify($password,$row['password'])) {
+                                            if (password_verify($password,$row['PASSWORD'])) {
                                                 $_SESSION['userId']=$row['userId'];
-                                                header("Location: index.php");
+                                                header("Location: users.php");
                                                 die;
                                             }
                                                 else{
@@ -93,16 +94,16 @@ include('./phpfiles/utils.php');
 
                          //if user uses phone number
                          if(preg_match_all($phoneNumberRegex,$emailOrPhonenumber)){
-                            $query="select * from user_data where phonenumber='$emailOrPhonenumber' limit 1" ;
+                            $query="select * from users_data where phonenumber='$emailOrPhonenumber' limit 1" ;
                             $result=$conn->query($query);
 
                                 if($result && $result->num_rows>0){
 
                                      if($row=$result->fetch_assoc()){
 
-                                            if (password_verify($password,$row['password'])) {
+                                            if (password_verify($password,$row['PASSWORD'])) {
                                                 $_SESSION['userId']=$row['userId'];
-                                                header("Location: index.php");
+                                                header("Location:users.php");
                                                 die;
                                             }
                                                 else{

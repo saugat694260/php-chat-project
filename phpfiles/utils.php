@@ -25,7 +25,7 @@ if(!function_exists('checkLogin')){
     function checkLogin($conn){
         if(isset($_SESSION['userId'])){
           $userId=$_SESSION['userId'];
-          $query="select * from user_data where userId='$userId' limit 1";  
+          $query="select * from users_data where userId='$userId' limit 1";  
           $result=$conn->query($query);
 
             if($result->num_rows>0){
@@ -49,4 +49,10 @@ if(!function_exists('checkLoggedoutOrNot')){
         }
     }
 }
+//logout
+
+
+
+
 ?>
+
