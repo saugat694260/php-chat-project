@@ -18,7 +18,7 @@ $user_data=checkLogin($conn);
 
 </head>
 <!-- calling function on onload-->
-<body onload="displayOnLoad()">
+<body >
 
 <div class="page-main-container">
 
@@ -53,10 +53,53 @@ $user_data=checkLogin($conn);
                 $result=$conn->query($query);
                 if($result->num_rows>0){
                     while($row=$result->fetch_assoc()){?>
-                        <p ><a href="conversations.php? id=<?php echo $row["id"]; ?>"><?php echo $row["username"]; ?></a></p>
+                        <p ><a href="conversations.php? id=<?php echo $row["id"]; ?>"><?php echo $row["username"]; ?><span><?php
+                        
+                        //update message in realtime
+
+    try
+    {
+        $query="select * from `{$row["id"]}"."{$user_data['id']}` ORDER BY id DESC limit 1;";
+        $result=$conn2->query($query);
+            if($result->num_rows>0){
+                while($row=$result->fetch_assoc()){
+                    if($row['userId']==$user_data['id']){echo 'sent:';}
+                    else {echo 'recived:';}
+                 echo "{$row['message']}";
+                }
+  
+             }
+
+    }
+    catch( mysqli_sql_exception)
+    {
+
+        //second try catch
+    try{
+
+        $query="select * from `{$user_data['id']}"."{$row["id"]}` ORDER BY id DESC limit 1;";
+        $secondResult=$conn2->query($query);
+            if($secondResult->num_rows>0){
+                while($row=$secondResult->fetch_assoc()){
+                    if($row['userId']==$user_data['id']){echo 'sent:';}
+                    else {echo 'recived:';}
+                    echo "{$row['message']}";
+                }
+            }
+
+            }catch(mysqli_sql_exception){
+
+               echo "";
+            }
+    }
+}
+?>
+                        
+                        
+                        </span></a></p>
                     <?php
                     }
-                };
+                ;
             ?>
 
             </div>
@@ -64,6 +107,52 @@ $user_data=checkLogin($conn);
     </div>
 </div>
 <!--script link-->
-<script  src="scripts/users.js"></script>
+<script  >//beacouse of the script loading before html it gave null to element so it had to be wrapped i function and called with onload
+
+    const mainButton=document.querySelector(".main-Button");
+    const closeButton=document.querySelector(".close-Button");
+    const container=document.querySelector(".container");
+    const html=document.querySelector("html");
+    //
+    let clicked=false;
+    mainButton.addEventListener('click',()=>{
+      open();
+      openSecondOption();
+    
+    });
+    closeButton.addEventListener('click',close);
+    
+    function open() {
+      container.classList.add("js-container");
+      container.classList.remove("animation-2");
+      container.classList.add("animation-1");
+      html.classList.add("blur-Background");
+    }
+    
+    function close() {
+      
+      container.classList.remove("animation-1");
+      container.classList.remove("js-container");
+      html.classList.remove("blur-Background");
+    }
+    
+    function openSecondOption(){
+      if(!clicked){
+        container.classList.add("js-container");
+        container.classList.remove("animation-2");
+        container.classList.add("animation-1");
+        html.classList.add("blur-Background");
+        clicked=true;
+      
+      }
+      else{
+        clicked=false;
+        container.classList.remove("animation-1");
+        container.classList.remove("js-container");
+        html.classList.remove("blur-Background");
+      }
+    }
+     
+</script>
 </body>
 </html>

@@ -12,7 +12,8 @@
     height: 60%;
   
     border: 1px solid black;
-    overflow-y: scroll;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: auto;
     flex-wrap: wrap;
     background-color: rgb(244, 238, 238);
     padding: 32px;

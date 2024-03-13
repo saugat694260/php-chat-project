@@ -164,3 +164,14 @@ echo $userId;
 
 </body>
 </html>
+<!--$_COOKIEcreate table users_data(
+    id int primary key AUTO_INCREMENT
+  ,userId varchar(255) not null,
+    email varchar(255),
+    phonenumber varchar(255),
+    username varchar(255) not null,
+    password varchar(255) not null,
+    DOB varchar(255),
+    gender varchar(20),
+    registeredTime timestamp
+                       );-->

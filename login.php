@@ -71,7 +71,7 @@ checkLoggedoutOrNot();
 
                                      if($row=$result->fetch_assoc()){
 
-                                            if (password_verify($password,$row['PASSWORD'])) {
+                                            if (password_verify($password,$row['password'])) {
                                                 $_SESSION['userId']=$row['userId'];
                                                 header("Location: users.php");
                                                 die;
@@ -101,7 +101,7 @@ checkLoggedoutOrNot();
 
                                      if($row=$result->fetch_assoc()){
 
-                                            if (password_verify($password,$row['PASSWORD'])) {
+                                            if (password_verify($password,$row['password'])) {
                                                 $_SESSION['userId']=$row['userId'];
                                                 header("Location:users.php");
                                                 die;
