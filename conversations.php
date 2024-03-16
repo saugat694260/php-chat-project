@@ -4,6 +4,8 @@ include('./phpfiles/connection.php');
 include('./phpfiles/validation.php');
 include('./phpfiles/utils.php');
 $current_user_data=checkLogin($conn);
+$_SESSION['chattingUserId']=$_GET['id'];
+
 
 ?>
     
@@ -19,6 +21,7 @@ $current_user_data=checkLogin($conn);
 <link rel="stylesheet" href="css/shared.css?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="css/conversations.css?v=<?php echo time(); ?>">
 <script src="scripts/conversations.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body onload="runOnLoad()">
 <div class="page-main-container">
@@ -90,46 +93,7 @@ if(isset($_POST['delete-Conversations'])){
             }
 
 
-//update message in realtime
-if(!isset($_POST['send-message'])){
-    try
-    {
-        $query="select * from `{$_GET ['id']}"."{$current_user_data['id']}`";
-        $result=$conn2->query($query);
-            if($result->num_rows>0){
-                while($row=$result->fetch_assoc()){
-                ?> <p <?php if($row['userId']==$current_user_data['id']){echo"class='current-user-message-side'";}
-                 else if($row['userId']==$_GET['id']){
-                    echo"class='other-user-message-side'";
-                }?>><?php echo "{$row['message']}";?></p><?php
-                }
-  
-             }
 
-    }
-    catch( mysqli_sql_exception)
-    {
-
-        //second try catch
-    try{
-
-        $query="select * from `{$current_user_data['id']}"."{$_GET ['id']}`";
-        $secondResult=$conn2->query($query);
-            if($secondResult->num_rows>0){
-                while($row=$secondResult->fetch_assoc()){
-                    ?> <p <?php if($row['userId']==$current_user_data['id']){echo"class='current-user-message-side'";}
-                     else if($row['userId']==$_GET['id']){
-                        echo"class='other-user-message-side'";
-                    }?>><?php echo "{$row['message']}";?></p><?php
-                }
-            }
-
-            }catch(mysqli_sql_exception){
-
-                ?> <p><?php echo "say hi";?></p><?php
-            }
-    }
-}
 ?>
 
 
@@ -227,6 +191,21 @@ $result=$conn2->query($query);
 </div>
 </div>
 </div>
+
+<script>
+
+$(document).ready(function(){
+    
+    setInterval(() => {
+        
+        
+        $("#user-messages-sub-container-js").load('liveMessageUpdate.php'
+        );
+    }, 500);
+}
+);
+
+</script>
 
 </body>
 </html>

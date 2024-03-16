@@ -2,8 +2,9 @@
 session_start();
 include('./phpfiles/connection.php');
 include('./phpfiles/utils.php');
-include('conversations.php');
+
 $user_data=checkLogin($conn);
+$_SESSION['currentUserId']=$user_data['id'];
 
 ?>
 <!DOCTYPE html>
@@ -15,6 +16,7 @@ $user_data=checkLogin($conn);
 <title>peoples</title>
 <link rel="stylesheet" href="css/shared.css?v=<?php /* for forced load of css */ echo time(); ?>">
 <link rel="stylesheet" href="css/users.css?v=<?php echo time(); ?>">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
 <!-- calling function on onload-->
@@ -45,69 +47,28 @@ $user_data=checkLogin($conn);
                     </div>
                 </div>
 
-            <div class="user-list-sub-container">
+            <div class="user-list-sub-container" id="user-list-sub-container">
             
 
-                <?php
-                $query="select * from users_data where not id={$user_data['id']}";
-                $result=$conn->query($query);
-                if($result->num_rows>0){
-                    while($row=$result->fetch_assoc()){?>
-                        <p ><a href="conversations.php? id=<?php echo $row["id"]; ?>"><?php echo $row["username"]; ?><span><?php
-                        
-                        //update message in realtime
-
-    try
-    {
-        $query="select * from `{$row["id"]}"."{$user_data['id']}` ORDER BY id DESC limit 1;";
-        $result=$conn2->query($query);
-            if($result->num_rows>0){
-                while($row=$result->fetch_assoc()){
-                    if($row['userId']==$user_data['id']){echo 'sent:';}
-                    else {echo 'recived:';}
-                 echo "{$row['message']}";
-                }
-  
-             }
-
-    }
-    catch( mysqli_sql_exception)
-    {
-
-        //second try catch
-    try{
-
-        $query="select * from `{$user_data['id']}"."{$row["id"]}` ORDER BY id DESC limit 1;";
-        $secondResult=$conn2->query($query);
-            if($secondResult->num_rows>0){
-                while($row=$secondResult->fetch_assoc()){
-                    if($row['userId']==$user_data['id']){echo 'sent:';}
-                    else {echo 'recived:';}
-                    echo "{$row['message']}";
-                }
-            }
-
-            }catch(mysqli_sql_exception){
-
-               echo "";
-            }
-    }
-}
-?>
-                        
-                        
-                        </span></a></p>
-                    <?php
-                    }
-                ;
-            ?>
+                
 
             </div>
         </div>
     </div>
 </div>
 <!--script link-->
-<script  >//beacouse of the script loading before html it gave null to element so it had to be wrapped i function and called with onload
+<script  >
+$(document).ready(function(){
+    
+    setInterval(() => {
+        
+        
+        $("#user-list-sub-container").load('liveUserUpdate.php'
+        );
+    }, 500);
+}
+);
+//beacouse of the script loading before html it gave null to element so it had to be wrapped i function and called with onload
 
     const mainButton=document.querySelector(".main-Button");
     const closeButton=document.querySelector(".close-Button");
