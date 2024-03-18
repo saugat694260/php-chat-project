@@ -37,6 +37,57 @@ include("utils.php");
             };
 
     };
+     //for email and phone
+     function validateEmail($value){
+
+        $EmailRegex="/^([a-z]{2,24})(\d{2,5})@([a-z]{2,10}).([a-z]{2,12}).([a-z]{2,12})?$/mi";
+       
+            if(preg_match_all($EmailRegex,$value)){
+            return true;
+
+            }
+                
+
+                    else{
+                    return false;
+                    }
+
+    };
+
+    //email or phone error message
+    function emailErrorMessage($value){
+
+           if(!validateEmailOrPhone($value) ){
+                return 'invalid email';
+            };
+
+    };
+     //for email and phone
+     function validatePhone($value){
+        $phoneNumberRegex="/^[\d]{10}$/m";
+
+            
+            
+                if(preg_match_all($phoneNumberRegex,$value)){
+                return true;
+                }
+
+                    else{
+                    return false;
+                    }
+
+    };
+
+    //email or phone error message
+    function phoneErrorMessage($value){
+
+        
+            if(!validateEmailOrPhone($value) ){
+                return 'invalid phone';
+            };
+
+    };
+    
 
     //for username
     function validateUsername($value){
@@ -82,9 +133,7 @@ include("utils.php");
             else if(!validatePassword($value)){
                 return 'too weak password';
             }
-                else{
-                    return 'invalid';
-                }
+               
 
     }
 

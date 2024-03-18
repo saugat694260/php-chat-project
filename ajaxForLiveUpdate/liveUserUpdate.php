@@ -1,13 +1,12 @@
 <?php
 SESSION_START();
-include('./phpfiles/connection.php');
-include('./phpfiles/utils.php');
+include('../phpfiles/connection.php');
+include('../phpfiles/utils.php');
 
 //On page 2
 $user_data=checkLogin($conn);
 
- $currentUserId=$_SESSION['currentUserId'];
-       $chattingUserId=$_SESSION['chattingUserId'];
+
        
 $query="select * from users_data where not id={$user_data['id']}";
 $result=$conn->query($query);

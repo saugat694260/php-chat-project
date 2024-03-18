@@ -12,6 +12,13 @@ $year=date('Y');
         };
     } 
 
+    if (!function_exists('seprateTheDates')) { 
+        function seprateTheDates($dob){
+            $sepratedDate=explode("-", $dob);
+            return $sepratedDate;
+        };
+    } 
+
     if(!function_exists('randomNumbers')){
         function randomNumbers(){
             $text='';

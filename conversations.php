@@ -199,7 +199,7 @@ $(document).ready(function(){
     setInterval(() => {
         
         
-        $("#user-messages-sub-container-js").load('liveMessageUpdate.php'
+        $("#user-messages-sub-container-js").load('ajaxForLiveUpdate/liveMessageUpdate.php'
         );
     }, 500);
 }

@@ -42,7 +42,9 @@ $_SESSION['currentUserId']=$user_data['id'];
                                     <div><img class="sidebar-image" src="icons/profile.png"></div>
                                         <?php echo $user_data['username']; ?>
                                     </div>
+                                    
                                 </div>
+                                <p><a href="edit.php">edit</a></p>
                         <p><a href="./phpfiles/logout.php">logout</a></p>
                     </div>
                 </div>
@@ -63,7 +65,7 @@ $(document).ready(function(){
     setInterval(() => {
         
         
-        $("#user-list-sub-container").load('liveUserUpdate.php'
+        $("#user-list-sub-container").load('ajaxForLiveUpdate/liveUserUpdate.php'
         );
     }, 500);
 }

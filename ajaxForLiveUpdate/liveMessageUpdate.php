@@ -1,7 +1,7 @@
 <?php
 SESSION_START();
-include('./phpfiles/connection.php');
-include('./phpfiles/utils.php');
+include('../phpfiles/connection.php');
+include('../phpfiles/utils.php');
 
 //On page 2
  $currentUserId=$_SESSION['currentUserId'];
