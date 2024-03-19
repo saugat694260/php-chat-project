@@ -10,7 +10,7 @@ $conn="";
     try
     {
         $conn=new mysqli($db_server,$db_user,$db_password,$db_name);
-        echo "connected to database successfully";
+        
     }
     catch( mysqli_sql_exception)
     {
@@ -32,7 +32,7 @@ $conn2="";
     try
     {
         $conn2=new mysqli($db_server,$db_user,$db_password,$db_name);
-        echo "connected to database successfully";
+        
     }
     catch( mysqli_sql_exception)
     {
