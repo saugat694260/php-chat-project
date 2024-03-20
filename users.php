@@ -7,6 +7,8 @@ $user_data=checkLogin($conn);
 $_SESSION['currentUserId']=$user_data['id'];
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +46,60 @@ $_SESSION['currentUserId']=$user_data['id'];
                                     </div>
                                     
                                 </div>
+                              
+                                <form class="profile-upload-form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
+                                <label for="profile-upload" class="profile-upload-label">
+        Upload profile
+                                       </label>
+                                <input id="profile-upload" type="file" accept="image/*" name="profileImage">
+                                <input type="submit" name="uploadProfile" value="&#x2b06">
+                                </form>
+                                <p>
+
+                                <?php 
+// upload profile
+
+ 
+$statusMsg = ''; 
+ 
+// File upload directory 
+$targetDir = "userProfiles/"; 
+ 
+if(isset($_POST["uploadProfile"])){ 
+    if(!empty($_FILES["profileImage"]["name"])){ 
+        $fileName = $_FILES["profileImage"]["name"]; 
+        $tempname = $_FILES["profileImage"]["tmp_name"];//for storing on folder
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION); 
+  
+        // Allow certain file formats 
+        $allowTypes = array('jpg','png','jpeg'); 
+        if(in_array($fileType, $allowTypes)){ 
+            // Upload file to server 
+            if(move_uploaded_file($tempname,$targetFilePath)){ 
+                // Insert image file name into database 
+                $insert = $conn->query("UPDATE `users_data` SET `userProfile` = '$fileName' WHERE `id` = {$user_data['id']};"); 
+                if($insert){ 
+                    $statusMsg = "success"; 
+                    header('refresh:0');
+                }else{ 
+                    $statusMsg = "File upload failed, please try again."; 
+                }  
+            }else{ 
+                $statusMsg = "Sorry, there was an error uploading your file."; 
+            } 
+        }else{ 
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+        } 
+    }else{ 
+        $statusMsg = 'Please select a file to upload.'; 
+    } 
+} 
+ 
+// Display status message 
+echo $statusMsg; 
+?>
+                                </p>
                                 <p><a href="edit.php">edit</a></p>
                         <p><a href="./phpfiles/logout.php">logout</a></p>
                     </div>

@@ -14,6 +14,7 @@ include('../phpfiles/utils.php');
                {
                    $query="select * from `{$_SESSION['currentUserId']}"."{$_SESSION['chattingUserId']}`";
                    $result=$conn2->query($query);
+                   
                        if($result->num_rows>0){
                         
                            while($row=$result->fetch_assoc()){
@@ -21,12 +22,22 @@ include('../phpfiles/utils.php');
                             else if($row['userId']== $chattingUserId){
                                echo"class='other-user-message-side'";
                            }?>><?php 
+                            
                            echo $row['message'];
-                        ?></p><?php
-                           }
-             
-                        }
-           
+                          
+                    ?></p><?php
+                      }
+                     
+                  }
+                  else{
+                   ?><p <?php
+                  
+                       ?>><?php  echo "say hii";?></p><?php
+                  }
+      
+                  }catch(mysqli_sql_exception){
+      
+                      ?> <p><?php echo "say hi";?></p><?php
                }
                catch( mysqli_sql_exception)
                {
@@ -43,9 +54,17 @@ include('../phpfiles/utils.php');
                              else if($row['userId']== $chattingUserId){
                                 echo"class='other-user-message-side'";
                             }?>><?php 
-                            echo $row['message'];
+                            
+                                echo $row['message'];
+                               
                          ?></p><?php
                            }
+                          
+                       }
+                       else{
+                        ?><p <?php
+                       
+                            ?>><?php  echo "say hii";?></p><?php
                        }
            
                        }catch(mysqli_sql_exception){

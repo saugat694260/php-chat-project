@@ -9,7 +9,7 @@
 
 }
 .user-messages-sub-container{
-    height: 60%;
+    height: 60vh;
   
     border: 1px solid black;
     overflow-x: hidden; /* Hide horizontal scrollbar */

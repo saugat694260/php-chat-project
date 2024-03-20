@@ -39,8 +39,6 @@ $_SESSION['chattingUserId']=$_GET['id'];
                <input type="submit" name="delete-Conversations" value="delete" form="input-message-form">
     </div>        
 <div class="">
-<div class="user-messages-sub-container" id="user-messages-sub-container-js">
-     <!--display smessages-->
 <?php 
 
 //delete message
@@ -53,7 +51,7 @@ if(isset($_POST['delete-Conversations'])){
         $conn2->query($query);
         
         $_POST['delete-Conversations']=null;
-        ?> <p><?php echo "deleted";?></p><?php
+        ?> <p style="color:white"> <?php echo "deleted";?></p><?php
 
     }
     catch( mysqli_sql_exception)
@@ -65,7 +63,7 @@ if(isset($_POST['delete-Conversations'])){
             $conn2->query($query);
             
             $_POST['delete-Conversations']=null;
-            ?> <p><?php echo "deleted";?></p><?php
+            ?> <p style="color:white"><?php echo "deleted";?></p><?php
 
 
         }
@@ -79,18 +77,6 @@ if(isset($_POST['delete-Conversations'])){
 
 }
 
-     //send message
-     if($_SERVER['REQUEST_METHOD']=='POST'){
-        
-                if(empty('delete-Conversations')){
-               
-        
-                    header('location:jiuhrog.pjp');
-        
-                }
-        
-        
-            }
 
 
 
@@ -123,16 +109,19 @@ $result=$conn2->query($query);
                 id int primary key AUTO_INCREMENT,userId varchar(255),userName varchar(255), message varchar(255),todaysDate date ,currentTime time);";
                 $result=$conn2->query($query);
                     if(!$result){
-                        ?> <p><?php echo "something went wrong, try again later";?></p><?php  
+                        ?> <p style="color:white"><?php echo "something went wrong, try again later";?></p><?php  
                     }
                         else{
-                        ?> <p><?php echo "you can now message each other";?></p><?php
+                        ?> <p style="color:white"><?php echo "you can now message each other";?></p><?php
                         }
             }
     }
 
 }
 ?>
+<div class="user-messages-sub-container" id="user-messages-sub-container-js">
+     <!--display smessages-->
+
 
 <?PHP
     //send message
