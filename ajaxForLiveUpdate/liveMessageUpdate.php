@@ -25,7 +25,11 @@ include('../phpfiles/utils.php');
                             
                            echo $row['message'];
                           
-                    ?></p><?php
+                    ?></p><span style="color:black"><?php
+                    $time=explode(" ", $row['todaysDate']);
+                    $date = $time[0];
+                  $day=date('l', strtotime($date));
+                    echo $day ." ". $time[1];?></span><?php
                       }
                      
                   }
@@ -54,7 +58,11 @@ include('../phpfiles/utils.php');
                             
                                 echo $row['message'];
                                
-                         ?></p><?php
+                         ?></p><span style="color:black"><?php
+                         $time=explode(" ", $row['todaysDate']);
+                         $date = $time[0];
+                       $day=date('l', strtotime($date));
+                         echo $day ." ". $time[1];?></span><?php
                            }
                           
                        }

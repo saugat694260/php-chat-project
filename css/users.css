@@ -116,6 +116,7 @@ a:link ,a:visited,a:hover,a:hover,a:active {
     position: absolute;
     top: 4px;
     left: 4px;
+    z-index: 1000;
   }
   .container{
     background-color: white;

@@ -106,7 +106,7 @@ $result=$conn2->query($query);
             catch(mysqli_sql_exception){
                 //create a database if one doesnt exist
                 $query="create table `{$id}"."{$current_user_data['id']}`(
-                id int primary key AUTO_INCREMENT,userId varchar(255),userName varchar(255), message varchar(255),todaysDate date ,currentTime time);";
+                id int primary key AUTO_INCREMENT,userId varchar(255),userName varchar(255), message varchar(255),todaysDate TIMESTAMP);";
                 $result=$conn2->query($query);
                     if(!$result){
                         ?> <p style="color:white"><?php echo "something went wrong, try again later";?></p><?php  
