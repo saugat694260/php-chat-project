@@ -73,7 +73,7 @@ align-items: center;
   text-align: center;
     padding: 10px;
     padding: 8px;
-
+position: relative;
     cursor: pointer;
     margin: 2px;
     box-shadow: 0px 1px black;
@@ -93,7 +93,10 @@ border-radius: 24px;
 
 a:link ,a:visited,a:hover,a:hover,a:active {
   color: black;
+  text-align: right;
+  
 }
+
 
 
 
