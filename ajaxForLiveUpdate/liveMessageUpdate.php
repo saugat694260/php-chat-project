@@ -35,10 +35,7 @@ include('../phpfiles/utils.php');
                        ?>><?php  echo "say hii";?></p><?php
                   }
       
-                  }catch(mysqli_sql_exception){
-      
-                      ?> <p><?php echo "say hi";?></p><?php
-               }
+                  }
                catch( mysqli_sql_exception)
                {
            
