@@ -6,8 +6,30 @@
     height: 100%;
     width: 100%;
     background-color: black;
+    position: relative;
 
 }
+.user-profile-container{
+  z-index:1000;
+  width:85%;
+  height:80%;
+  position:absolute;
+  background-color:white;
+  border:1px solid black;
+  display:grid;
+  display: none;
+  right:8%;
+  bottom:8%;
+}
+.user-profile-sub-container{
+  display: grid;
+  justify-content: center;
+}
+.show-element{
+  display:initial;
+}
+
+
 .user-list-container{
  position: relative;
 }

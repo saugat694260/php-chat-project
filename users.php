@@ -100,10 +100,24 @@ if(isset($_POST["uploadProfile"])){
 echo $statusMsg; 
 ?>
                                 </p>
+                                <p><a href="edit.php">add bio</a></p>
                                 <p><a href="edit.php">edit</a></p>
                         <p><a href="./phpfiles/logout.php">logout</a></p>
+                        <p><a href="edit.php">delete account</a></p>
                     </div>
                 </div>
+                <div class="user-profile-container user-profile-container-js">
+                    <button id="close-profile-container" style="position:absolute:z-index:1001;width:40px;height:40px">x</button>
+  <div class="user-profile-sub-container">
+<div class="user-profile-image-container" style="width:100px;background-color:black;height:100px">
+
+</div>
+<div class="close-profile-information-container">
+
+</div>
+  </div>
+
+            </div>
 
             <div class="user-list-sub-container" id="user-list-sub-container">
             
@@ -116,13 +130,31 @@ echo $statusMsg;
 </div>
 <!--script link-->
 <script  >
+      
+
 $(document).ready(function(){
+
     
+ $("#close-profile-container").on('click',()=>{
+
+    let profileContainer=document.querySelector('.user-profile-container-js');
+    profileContainer.classList.remove('show-element');
+    
+ })
     setInterval(() => {
         
         
         $("#user-list-sub-container").load('ajaxForLiveUpdate/liveUserUpdate.php'
         );
+        
+   
+        
+    
+
+    
+      
+ 
+   
     }, 500);
 }
 );

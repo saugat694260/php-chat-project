@@ -17,13 +17,21 @@ if(!isset($user_data)){
     $query="update users_data set onlineStatus='offline' where id={$user_data['id']} " ;
     $result=$conn->query($query);
 }
-
+if(isset($_POST['show-profile-button'])){
+    header('location:users.php');
+}
 
 $query="select * from users_data where not id={$user_data['id']}";
 $result=$conn->query($query);
 if($result->num_rows>0){
-    while($row=$result->fetch_assoc()){?>
-       <div class="user-status"><div class="user-info"><div class="profile-pic-image-container" class="see-profile-js"><img src="userProfiles/<?php if(isset($row['userProfile'])){echo "{$row['userProfile']}";} else{echo "profilePicture.png";} ?>" alt="wryy"></div><a href="conversations.php? id=<?php echo $row["id"]; ?>"><?php echo $row["username"];
+    while($row=$result->fetch_assoc()){
+        
+        ?>
+
+       <div class="user-status"><div class="user-info"><button name="show-profile-button" class="profile-pic-image-container see-profile-js" data-profile-id="<?php echo $row['id']?>">
+        <img  src="userProfiles/<?php if(isset($row['userProfile'])){echo "{$row['userProfile']}";} else{echo "profilePicture.png";} ?>" alt="wryy">
+       </button>
+       <a href="conversations.php? id=<?php echo $row["id"]; ?>"><?php echo $row["username"];
    ?>
    <span style="position:absolute;left:0px;">
 
@@ -149,7 +157,7 @@ if($result->num_rows>0){
 
 
 
-</span>
+</span></a>
 </div><span class="offline-or-online-status" <?php if($row['onlineStatus']=='online'){ echo 'style="background-color:green"';} ?>></span> </div><?php }
 
 }
@@ -160,11 +168,50 @@ if($result->num_rows>0){
 ?>
 <script>
    
-   
-    function runOnLoad(){
-        console.log('hi');
+ 
 
+
+
+
+   $(document).ready(function(){
+
+//'ajaxForLiveUpdate/userData.php'
+
+
+
+
+
+    document.querySelectorAll('.see-profile-js').forEach((e)=>{
     
-}
+    e.addEventListener('click',(event)=>{
+    
+      
+
+
+
+
+        $.post('ajaxForLiveUpdate/userdata.php', { 
+        id: e.dataset.profileId
+    }, (response) => { 
+        // response from PHP back-end 
+        $('.user-profile-sub-container').html(response)
+    });       
+            
+
+
+
+       
+        let profileContainer=document.querySelector('.user-profile-container-js');
+        profileContainer.classList.add('show-element');
+        
+       
+       }
+       
+    )
+       });
+   })
+   
+    
+
 </script>
 
