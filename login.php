@@ -6,6 +6,16 @@ include('./phpfiles/validation.php');
 include('./phpfiles/utils.php');
 checkLoggedoutOrNot();
 
+if(isset($_COOKIE['userId'])) {
+    
+        $_SESSION['userId']=$_COOKIE['userId'];
+        header("Location:users.php");
+        die;
+    
+ 
+} 
+
+
 
 ?>
 
@@ -72,7 +82,14 @@ checkLoggedoutOrNot();
                                      if($row=$result->fetch_assoc()){
 
                                             if (password_verify($password,$row['password'])) {
-                                                $_SESSION['userId']=$row['userId'];
+                                                if (password_verify($password,$row['password'])) {
+                                                    $cookie_userId= $row['userId'];
+                                                    setcookie('userId',$cookie_userId, time() + (86400 * 30), "/");
+    
+                                                    if(!isset($_COOKIE[$cookie_userId])) {
+                                                        $_SESSION['userId']=$row['userId'];
+                                                    } 
+                                                }    
                                                 header("Location: users.php");
                                                 die;
                                             }
@@ -102,7 +119,14 @@ checkLoggedoutOrNot();
                                      if($row=$result->fetch_assoc()){
 
                                             if (password_verify($password,$row['password'])) {
-                                                $_SESSION['userId']=$row['userId'];
+                                                $cookie_userId= $row['userId'];
+                                                setcookie('userId',$cookie_userId, time() + (86400 * 30), "/");
+                                                
+                                                if(!isset($_COOKIE[$cookie_userId])) {
+                                                    $_SESSION['userId']=$row['userId'];
+                                                } 
+
+                                               
                                                 header("Location:users.php");
                                                 die;
                                             }
