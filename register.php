@@ -96,17 +96,23 @@ echo $userId;
             <div class="form-container">
                 <div class="form-first-sub-container">
                     <input type="text" id="emailOrPhonenumber-js" name="emailOrPhonenumber" placeholder="email Or Phonenumber">
-                    <span id="error-message-emailOrPhonenumber-js"><?php if(isset($_POST["register"]))echo emailOrPhoneErrorMessage($_POST["emailOrPhonenumber"]);?></span>
+                    <span id="error-message-emailOrPhonenumber-js">
+                        <?php if(isset($_POST["register"]))echo emailOrPhoneErrorMessage($_POST["emailOrPhonenumber"]);?>
+                    </span>
 
                     <input type="text" id="username-js" name="username" placeholder="username">
-                    <span id="error-message-username-js"><?php if(isset($_POST["register"])){echo usernameErrorMessage($_POST["username"]);}?></span>
+                    <span id="error-message-username-js">
+                        <?php if(isset($_POST["register"])){echo usernameErrorMessage($_POST["username"]);}?>
+                    </span>
 
                         <div>
                             <input type="password" id="password-js" name="password" placeholder="password">
                             <button class="show-and-hide-password" id="show-and-hide-password-js">show</button>
                         
                         </div>
-                    <span id="error-message-password-js"><?php if(isset($_POST["register"]))echo passwordErrorMessage($_POST["password"]);?></span>
+                    <span id="error-message-password-js">
+                        <?php if(isset($_POST["register"]))echo passwordErrorMessage($_POST["password"]);?>
+                    </span>
                     </div>
 
                 <div class="form-second-sub-container" id="form-second-sub-container-js">
@@ -123,7 +129,9 @@ echo $userId;
                     <select name="year" id="year-js">
                     </select>
                  </div>
-                 <span id="error-message-age-js"><?php if(isset($_POST["register"]))echo validateAgeErrorMessage(calculateUserAgeFromSelectedDates(("{$_POST['year']}-{$_POST['month']}-{$_POST['day']}")));?></span>
+                 <span id="error-message-age-js">
+                    <?php if(isset($_POST["register"]))echo validateAgeErrorMessage(calculateUserAgeFromSelectedDates(("{$_POST['year']}-{$_POST['month']}-{$_POST['day']}")));?>
+                </span>
               
                  <div class="form-third-sub-container">
                     <label >male</label>
@@ -133,7 +141,11 @@ echo $userId;
                     <label>others</label>
                     <input type="radio" name="gender" value="others" id="others-js">
                 </div>
-                <span id="error-message-gender-js"><?php /*shows this message if ratio button is not clicked but submit is clicked*/if(isset($_POST['register']) && !isset($_POST['gender'])){echo 'please select gender';};?></span>
+                <span id="error-message-gender-js">
+                    <?php /*shows this message if ratio button is not clicked but submit is clicked*/
+                    if(isset($_POST['register']) && !isset($_POST['gender'])){echo 'please select gender';};
+                    ?>
+                </span>
                 
                 <div class="form-fourth-sub-container">
                 <input type="submit" name="register" value="sign up" id="submit-js">

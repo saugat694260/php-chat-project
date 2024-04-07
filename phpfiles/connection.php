@@ -1,5 +1,5 @@
 <?php
-
+//user database
 $db_server="localhost";
 $db_user="root";
 $db_password="";
@@ -19,9 +19,7 @@ $conn="";
     }
 
 
-?>
-<?php
-
+//conversation database
 $db_server="localhost";
 $db_user="root";
 $db_password="";
