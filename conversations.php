@@ -34,7 +34,8 @@ $_SESSION['chattingUserId']=$_GET['id'];
 
 
         <div class="user-messages-main-container">
-
+            <!--go to users.php-->
+        <button style="z-index:4000;font-size:20px;padding:4px;border-radius:8px"> <a href="users.php">&#x2190</a></button>
             <!--display selected user info-->
             <div>
                 <!--p for showing partner info-->
