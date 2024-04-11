@@ -52,7 +52,7 @@ $_SESSION['chattingUserId']=$_GET['id'];
                     ?>
                 </p> 
                 <!--button to delete message-->
-                <input type="submit" name="delete-Conversations" value="delete" form="input-message-form">
+                <input type="submit" name="delete-Conversations" value="delete" form="input-message-form" id="delete-message-js">
 
                 <?php 
                  //delete message
@@ -228,6 +228,14 @@ $_SESSION['chattingUserId']=$_GET['id'];
     <script>
 
 $(document).ready(function(){
+  
+//prevent event of enter button
+$(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});
 
 //refreshes the messages every 500 ms
     setInterval(() => {
