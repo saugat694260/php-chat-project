@@ -23,10 +23,11 @@ if(isset($_POST['show-profile-button'])){
 
 //display users
 $query="select * from users_data where not id={$user_data['id']}";
-$result=$conn->query($query);
+$result=queryResult($query,$conn);
 
-if($result->num_rows>0){
-    while($row=$result->fetch_assoc()){
+    if($result){
+
+    foreach($result as $row){
 
         ?>
         <!-- div for holding all data of users list-->
@@ -107,10 +108,11 @@ if($result->num_rows>0){
                             try{
 
                             $query2="select * from `{$row['id']}"."{$user_data['id']}` order by id desc limit 1";
-                            $result2=$conn2->query($query2);
-                            if($result2->num_rows>0){
+                            $result2=queryResult($query2,$conn2);
 
-                                while($row2=$result2->fetch_assoc()){
+                            if($result2){
+
+                                foreach($result2 as $row2){
 
                                     //shows whether the message is sent or recived
                                     ?>
