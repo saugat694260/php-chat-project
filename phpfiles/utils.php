@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 $day=date('j');
 $month=date('n');
 $year=date('Y');
@@ -56,9 +60,29 @@ if(!function_exists('checkLoggedoutOrNot')){
         }
     }
 }
-//logout
 
+//for queries
+if(!function_exists('queryResult')){
+    function queryResult($query,$connection){
 
+       
+        $data = array();
+        $result=$connection->query($query);
+
+       
+          if($result->num_rows>0){
+            while($row =$result->fetch_assoc())
+            {
+                $data[] = $row;
+            }
+    
+            return $data;
+          }
+        
+         
+
+    };
+}
 
 
 ?>
