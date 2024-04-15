@@ -9,9 +9,11 @@ include('../phpfiles/utils.php');
 if(isset($_POST['id'])) 
     { 
     $query="select * from `users_data` where  id={$_POST['id']}";
-    $result=$conn->query($query);
-    if($result->num_rows>0){
-        while($row=$result->fetch_assoc()){
+    $result=queryResult($query,$conn);
+
+    if($result){
+
+    foreach($result as $row){
             
             $photo="";
             if(isset($row['userProfile'])){
