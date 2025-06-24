@@ -166,7 +166,7 @@ $_SESSION['currentUserId']=$user_data['id'];
     <div>
     <img class="sidebar-image" src="icons/profile.png">
     </div>
-    <a href="edit.php">delete account</a>
+    <a href="./phpfiles/delete.php">delete account</a>
     </div>
 
 

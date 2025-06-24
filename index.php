@@ -167,7 +167,7 @@ if(isset($_COOKIE['userId'])) {
                 </div>
 
                 <div class="form-third-sub-container">
-                <p>dont have an account?<a href="">sign up</a></p>
+                <p>dont have an account?<a href="register.php">sign up</a></p>
                 <p><a href="">forgot password?</a></p>
                 </div>
 
@@ -179,7 +179,7 @@ if(isset($_COOKIE['userId'])) {
 
     <div class="title-main-container">
         <div class="title-first-sub-container">
-            <p>fuckbook</p>
+            <p>easa</p>
         </div>
 
         <div class="title-second-sub-container">

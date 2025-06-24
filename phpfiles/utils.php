@@ -46,7 +46,7 @@ if(!function_exists('checkLogin')){
             
         }
 
-        header("Location: login.php");
+        header("Location: index.php");
         die;
     };
 }
