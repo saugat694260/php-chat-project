@@ -40,7 +40,7 @@ echo $userId;
                 if(preg_match_all($EmailRegex,$emailOrPhonenumber)){
                     $query="insert into users_data(userId,email,username,password,DOB,gender) values('$userId','$emailOrPhonenumber','$username','$hash','$dob','$gender')";
                     $conn->query($query);
-                    header('Location:login.php');
+                    header('Location:index.php');
                     die;
 
                 }
