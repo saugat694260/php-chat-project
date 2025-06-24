@@ -152,7 +152,7 @@ echo $userId;
                 </div>
     
                 <div class="form-fifth-sub-container">
-                    <p>already have an account?<a href="">login</a></p>
+                    <p>already have an account?<a href="index.php">login</a></p>
                     <p><a href="">forgot password?</a></p>
                 </div>
     
@@ -164,7 +164,7 @@ echo $userId;
     
     <div class="title-main-container">
         <div class="title-first-sub-container">
-            <p>fuckbook</p>
+            <p>zaza</p>
         </div>
         
         <div class="title-second-sub-container">
